@@ -15,6 +15,6 @@ public class HotDrink extends Product{
 
     @Override
     public String getDescription() {
-        return super.getDescription() + ", " + this.temp;
+        return super.getDescription() + ", температура: " + this.temp;
     }
 }

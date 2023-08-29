@@ -25,6 +25,6 @@ public class Bottle extends Product {
 
     @Override
     public String getDescription() {
-        return super.getDescription() + ", " + this.bottleVolume;
+        return super.getDescription() + ", объем: " + this.bottleVolume;
     }
 }
