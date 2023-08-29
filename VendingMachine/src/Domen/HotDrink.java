@@ -12,4 +12,9 @@ public class HotDrink extends Product{
     public String toString() {
         return super.toString() + "; temp=" + temp;
     }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", " + this.temp;
+    }
 }

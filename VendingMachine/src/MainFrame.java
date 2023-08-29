@@ -1,123 +1,118 @@
+import Domen.Product;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.*;
+
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class MainFrame extends JFrame {
     
     
     final private Font mainFont = new Font("Segoe print", Font.BOLD, 18);
-    JTextField tfFirstName, tfLastName;
+    JTextField tfCoins, tfIndex;
     
     
     JLabel lbWelcome;
 
-    public void initialize() {
-       
-        
-        JLabel lbFirstName = new JLabel("First Name");
-        lbFirstName.setFont(mainFont);
+    public void initialize(List<Product> assort) {
 
-        tfFirstName = new JTextField();
-        tfFirstName.setFont(mainFont);
-        
-        
-        JLabel lbLastName = new JLabel("First Name");
-        lbLastName.setFont(mainFont);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-       
-        
-        tfLastName = new JTextField();
-        tfLastName.setFont(mainFont);
+        JPanel p1 = new JPanel();
+        p1.setBackground(Color.GRAY);
+        JLabel l1 = new JLabel();
+        l1.setText("Здесь могла быть ваша реклама");
+        p1.add(l1);
 
-        
-        
-        JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(4, 1, 5, 5));
-        formPanel.add(lbFirstName);
-        formPanel.add(tfFirstName);
-        formPanel.add(lbLastName);
-        formPanel.add(tfLastName);
-        
-        
-        lbWelcome = new JLabel();
-        lbWelcome.setFont(mainFont);
+        JPanel p3 = new JPanel(new BorderLayout());
+        JLabel l3 = new JLabel();
+        l3.setText("Доступные товары");
+        p3.add(l3, BorderLayout.NORTH);
 
-        
-        
-        JButton btnOk = new JButton("Ok");
+        Box b1 = Box.createVerticalBox();
+        int i=1;
+        for (Product product : assort) {
+            b1.add(new JLabel((i++) + " - " + product.getDescription() + " = " + product.getPrice() + " р."));
+        }
+        p3.add(b1);
+
+        getContentPane().add(p1, BorderLayout.NORTH);
+        getContentPane().add(controlPanel(assort), BorderLayout.EAST);
+        getContentPane().add(p3);
+        setSize(600, 600);
+        setTitle("VendingMachines");
+        setVisible(true);
+    }
+
+    private JComponent controlPanel(List<Product> assort) {
+        Box mainBox = Box.createVerticalBox();
+        JLabel label1 = new JLabel();
+        label1.setFont(mainFont);
+        label1.setText("Введите сумму");
+        mainBox.add(label1);
+
+        tfCoins = new JTextField();
+        tfCoins.setFont(mainFont);
+        tfCoins.setMaximumSize(new Dimension(160, 250));
+        mainBox.add(tfCoins);
+
+        JLabel label2 = new JLabel();
+        label2.setFont(mainFont);
+        label2.setText("Введите номер товара");
+        mainBox.add(label2);
+
+        tfIndex = new JTextField();
+        tfIndex.setFont(mainFont);
+        tfIndex.setMaximumSize(new Dimension(160, 250));
+        mainBox.add(tfIndex);
+
+        JButton btnOk = new JButton("Выдать товар");
         btnOk.setFont(mainFont);
         btnOk.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                
-                String firstName = tfFirstName.getText();
-                String lastName = tfFirstName.getText();
-                lbWelcome.setText("Hello " + firstName + " " + lastName);
-                
-                
+
+                int coin, index;
+                try {
+                    coin = Integer.parseInt(tfCoins.getText());
+                } catch (Exception excp) {
+                    tfCoins.setText("");
+                    return;
+                }
+                try {
+                    index = Integer.parseInt(tfIndex.getText());
+                } catch (Exception excp) {
+                    tfIndex.setText("");
+                    return;
+                }
+
+                if (index > assort.size() || index < 1) {
+                    showMessageDialog(null, "Введен не правильный номер товара");
+                } else {
+                    Product currentProduct = assort.get(index - 1);
+                    if (coin < currentProduct.getPrice()) {
+                        showMessageDialog(null, "Недостаточно средств");
+                    } else {
+                        int change = coin - currentProduct.getPrice();
+                        showMessageDialog(null, String.format("Выдан товар\n%s\nСдача: %d", currentProduct, change));
+                    }
+                }
+
+
             }
 
         });
+        mainBox.add(btnOk);
 
-       
-        JButton btnClear = new JButton("Clear");
-        btnClear.setFont(mainFont);
-        btnClear.addActionListener(new ActionListener() {
+        mainBox.add(Box.createVerticalGlue());
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-                tfFirstName.setText("");
-                tfFirstName.setText("");
-                lbWelcome.setText("");
-                
-            }
+        return mainBox;
 
-        });
-
-        
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 2, 5, 5));
-        buttonPanel.add(btnOk);
-        buttonPanel.add(btnClear);
-
-        
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
-        mainPanel.setBackground(new Color(128, 128, 255));
-        
-        mainPanel.add(formPanel, BorderLayout.NORTH);
-
-        
-        mainPanel.add(lbWelcome, BorderLayout.CENTER);
-
-        
-        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-       
-        add(mainPanel);
-
-        
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-        formPanel.setOpaque(false);
-        buttonPanel.setOpaque(false);
-
-        
-        setTitle("VendingMachines");
-        setSize(500, 600);
-        setMaximumSize(new Dimension(300, 400));
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-    }
-
-    public static void main(String[] arg)
-    {
-        MainFrame myFrame = new MainFrame();
-        myFrame.initialize();
     }
 
 }

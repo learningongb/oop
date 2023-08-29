@@ -38,5 +38,9 @@ public class Product {
     {
         return "Product: price="+ this.price+"; name="+this.name;
     }
-    
+
+    public String getDescription() {
+        return name;
+    }
+
 }

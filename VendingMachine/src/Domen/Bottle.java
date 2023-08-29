@@ -22,6 +22,9 @@ public class Bottle extends Product {
     {
         return super.toString()+" volume="+this.bottleVolume;
     }
-    
-    
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", " + this.bottleVolume;
+    }
 }

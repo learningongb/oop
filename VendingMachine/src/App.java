@@ -29,11 +29,11 @@ public class App {
 
         VendingMachine venMach1 = new VendingMachine(hold1, disp, assort);
 
-        for(Product prod: venMach1.getProductList())
-        {
-            System.out.println(prod);
-        }
-//        MainFrame myFrame = new MainFrame();
-//        myFrame.initialize();
+//        for(Product prod: venMach1.getProductList())
+//        {
+//            System.out.println(prod);
+//        }
+        MainFrame myFrame = new MainFrame();
+        myFrame.initialize(assort);
     }
 }
