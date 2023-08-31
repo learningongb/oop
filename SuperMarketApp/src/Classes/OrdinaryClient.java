@@ -15,8 +15,9 @@ public class OrdinaryClient extends Actor {
         return super.isTakeOrder;
     }
 
-    public void setTakeOrder(boolean takenOrder) {
+    public boolean setTakeOrder(boolean takenOrder) {
         super.isTakeOrder = takenOrder;
+        return true;
     }
 
     public boolean isMakeOrder() {

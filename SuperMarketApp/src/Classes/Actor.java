@@ -9,6 +9,17 @@ public abstract class Actor implements iActorBehaviour, iReturnOrder {
     protected boolean isTakeOrder;
     protected boolean isMakeOrder;
     protected boolean isReturned;
+    protected boolean isBrokenOrder;
+
+    @Override
+    public void setBrokenOrder(boolean broken) {
+        this.isBrokenOrder = broken;
+    }
+
+    @Override
+    public boolean isBrokenOrder() {
+        return this.isBrokenOrder;
+    }
 
     public Actor(String name) {
         this.name = name;
@@ -18,11 +29,21 @@ public abstract class Actor implements iActorBehaviour, iReturnOrder {
     abstract public String getName();
 
     /**
-     * @apiNote Return order after take order
+     * @apiNote Вернуть ранее полученный товар.
+     * При этом снимается признак выдачи товара и устанавливается признак возврата.
      */
     @Override
     public void returnOrder() {
         this.isReturned = true;
         this.isTakeOrder = false;
+    }
+
+    /**
+     * @apiNote Получить признак, что клиент ранее вернул товар
+     * @return true, если клиент вернул товар
+     */
+    @Override
+    public boolean isReturnOrder() {
+        return this.isReturned;
     }
 }

@@ -1,9 +1,19 @@
 package Interfaces;
 
+/**
+ * @apiNote Интерфейс описывет методы возврата товара и определения того, что у клиента был возврат товара.
+ * Это необходимо для корректной работы очереди. Если клиент не получил товар, он не выйдет из очереди.
+ */
 public interface iReturnOrder {
     /**
-     * @apiNote Return order after take order
+     * @apiNote Вернуть ранее полученный товар
      */
     void returnOrder();
+
+    /**
+     * @apiNote Получить признак, что клиент ранее вернул товар
+     * @return true, если клиент вернул товар
+     */
+    boolean isReturnOrder();
 
 }

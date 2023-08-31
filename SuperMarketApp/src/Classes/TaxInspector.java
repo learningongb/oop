@@ -29,8 +29,9 @@ public class TaxInspector implements iActorBehaviour {
     }
 
     @Override
-    public void setTakeOrder(boolean take) {
+    public boolean setTakeOrder(boolean take) {
         isTakeOrder=take;
+        return true;
     }
 
     @Override
@@ -42,5 +43,15 @@ public class TaxInspector implements iActorBehaviour {
     public Actor getActor() {
         return new OrdinaryClient(name);
     }
-    
+
+    @Override
+    public void setBrokenOrder(boolean broken) {
+
+    }
+
+    @Override
+    public boolean isBrokenOrder() {
+        return false;
+    }
+
 }
