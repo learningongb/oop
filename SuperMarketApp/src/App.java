@@ -20,6 +20,8 @@ public class App {
         magnit.acceptToMarket(client4);
         magnit.acceptToMarket(client5);
 
+        magnit.addActorForTestReturn(client2);
+
         magnit.update();
 
         System.out.printf("Количество покупателей, обслуженных по акции \"%s\": %d", ActionClient.getAction(), ActionClient.getActionCount());

@@ -1,5 +1,7 @@
 package Classes;
 
+import Interfaces.iActorBehaviour;
+
 /**
  * @apiNote
  */
@@ -86,5 +88,14 @@ public class ActionClient extends Actor {
     @Override
     public Actor getActor() {
         return this;
+    }
+
+    /**
+     * @apiNote Return order after take order
+     */
+    @Override
+    public void returnOrder() {
+        super.returnOrder();
+        actionCount--;
     }
 }

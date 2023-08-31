@@ -7,13 +7,20 @@ import Interfaces.iActorBehaviour;
 
 import Interfaces.iMarketBehaviour;
 import Interfaces.iQueueBehaviour;
+import Interfaces.iReturnOrder;
 
 public class Market implements iMarketBehaviour, iQueueBehaviour {
 
     private List<iActorBehaviour> queue;
+    private List<iActorBehaviour> actorsForTestReturn;
+
+    public void addActorForTestReturn(iActorBehaviour actor) {
+        actorsForTestReturn.add(actor);
+    }
 
     public Market() {
         this.queue = new ArrayList<iActorBehaviour>();
+        this.actorsForTestReturn =  new ArrayList<iActorBehaviour>();
     }
 
     @Override
@@ -50,6 +57,10 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
             if (actor.isMakeOrder()) {
                 actor.setTakeOrder(true);
                 System.out.println(actor.getActor().getName() + " клиент получил свой заказ ");
+                if (actorsForTestReturn.contains(actor)) {
+                    ((Actor)actor).returnOrder();
+                    System.out.println(actor.getActor().getName() + " клиент вернул полученный заказ ");
+                }
             }
         }
 
@@ -73,7 +84,6 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
             if (!actor.isMakeOrder()) {
                 actor.setMakeOrder(true);
                 System.out.println(actor.getActor().getName() + " клиент сделал заказ ");
-
             }
         }
 

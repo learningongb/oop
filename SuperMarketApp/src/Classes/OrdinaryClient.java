@@ -1,5 +1,7 @@
 package Classes;
 
+import Interfaces.iActorBehaviour;
+
 public class OrdinaryClient extends Actor {
 
    // private boolean isTakenOrder;
@@ -39,4 +41,5 @@ public class OrdinaryClient extends Actor {
     public void setName(String name) {
        super.name = name;        
     }
+
 }

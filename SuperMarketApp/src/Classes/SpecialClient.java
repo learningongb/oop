@@ -1,5 +1,7 @@
 package Classes;
 
+import Interfaces.iActorBehaviour;
+
 public class SpecialClient extends Actor  {
 
     private int idVIP;
