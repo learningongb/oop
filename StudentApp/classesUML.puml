@@ -22,9 +22,9 @@ class StudentGroup implements Iterable, Comparable {
     __
     +add()
     ..Getters&Setters..
-    +getGroup()
+    +getGroup(): List<Student>
     +setGroup()
-    +getIdGroup()
+    +getIdGroup(): Integer
     +setIdGroup()
     ..@Override..
     +toString(): String
