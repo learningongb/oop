@@ -1,3 +1,3 @@
 ## Диаграмма классов приложения StudentApp
 
-![PlantUML model](http://www.plantuml.com/plantuml/png/5Sox3S90303GdYbWWRYd2ZrKY06SYtKvoMTR_eZr2TNhtXg9dZNvSXlIk7Ogv-kHQN47SFmkVUHHMmLvKqcIN9fEO4AN8LsbRw1gC748lFCC91zcq1WZA3wlvsB_VYNPJty0)
+![PlantUML model](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/learningongb/oop/main/StudentApp/classesUML.puml)
