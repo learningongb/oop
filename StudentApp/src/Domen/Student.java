@@ -1,29 +1,35 @@
 package Domen;
 
+/**
+ * Класс Student.
+ * Наследуется от класса Person.
+ * 
+ * Добавляет поле id, которое автоматически присваивается при создании экземпляра.
+ * 
+ * Реализован интерфейс Comparable, сравнивающий студентов по Имени, а если имена одинаковые, то по возрасту.
+ *
+ */
 public class Student extends Person implements Comparable<Student> {
 
-	private int id;
+	/** Счетчик идентификаторов по всем объектам класса*/
 	private static int generalId;
 
+	/** Идентификатор текущего объекта */
+	private int id;
+
+	/**
+	 * Создает нового студента
+	 * @param name Имя
+	 * @param age Возраст
+	 */
 	public Student(String name, int age) {
 		super(name, age);
-		this.id = generalId;
-		generalId++;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	@Override
-	public String toString() {
-		return "Students [age=" + super.getAge() + ", name=" + super.getName() + ", id=" + id + "]";
+		this.id = generalId++;
 	}
 
 	@Override
 	public int compareTo(Student o) {
 
-		System.out.println(super.getName() + " - " + o.getName());
 		if (super.getAge() == o.getAge()) {
 			if (id == o.id)
 				return 0;
@@ -37,6 +43,18 @@ public class Student extends Person implements Comparable<Student> {
 			return 1;
 		else
 			return -1;
+	}
+
+	/** Возвращает id
+	 * @return id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Students [age=" + super.getAge() + ", name=" + super.getName() + ", id=" + id + "]";
 	}
 
 }

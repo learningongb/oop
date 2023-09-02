@@ -20,6 +20,7 @@ class StudentGroup implements Iterable, Comparable {
     -idGroup: Integer
     -group: List<Student>
     __
+    +add()
     ..Getters&Setters..
     +getGroup()
     +setGroup()
@@ -27,9 +28,8 @@ class StudentGroup implements Iterable, Comparable {
     +setIdGroup()
     ..@Override..
     +toString(): String
-    +iterator()
+    +iterator(): StudentIterator
     +compareTo()
-
 }
 
 class StudentSteam implements Iterable {
@@ -38,9 +38,11 @@ class StudentSteam implements Iterable {
     __
     +add()
     +remove(): boolean
+    +getGroups(): List<StudentGroup>
+    +sortSteam()
     ..@Override..
     +toString(): String
-    +iterator()
+    +iterator(): GroupIterator
 }
 
 class StudentIterator implements Iterator {
@@ -49,7 +51,7 @@ class StudentIterator implements Iterator {
     __
     ..@Override..
     +hasNext()
-    +next(): StudentGroup
+    +next(): Student
 }
 
 class GroupIterator implements Iterator {
