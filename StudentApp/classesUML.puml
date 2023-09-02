@@ -1,0 +1,78 @@
+@startuml
+
+abstract class Person {
+    -name: String
+    -age: int
+}
+
+class Student extends Person implements Comparable{
+    -id: int
+    -{static} generalId: int
+    __
+    ..Getters&Setters..
+    +getId(): int
+    ..@Override..
+    +toString(): String
+    +compareTo(): int
+}
+
+class StudentGroup implements Iterable, Comparable {
+    -idGroup: Integer
+    -group: List<Student>
+    __
+    ..Getters&Setters..
+    +getGroup()
+    +setGroup()
+    +getIdGroup()
+    +setIdGroup()
+    ..@Override..
+    +toString(): String
+    +iterator()
+    +compareTo()
+
+}
+
+class StudentSteam implements Iterable {
+    -steamNumber: int
+    -groups: List<StudentGroup>
+    __
+    +add()
+    +remove(): boolean
+    ..@Override..
+    +toString(): String
+    +iterator()
+}
+
+class StudentIterator implements Iterator {
+    -counter: int
+    -students: List<Student>
+    __
+    ..@Override..
+    +hasNext()
+    +next(): StudentGroup
+}
+
+class GroupIterator implements Iterator {
+    -counter: int
+    -groups: List<StudentGroup>
+    __
+    ..@Override..
+    +hasNext()
+    +next(): StudentGroup
+}
+
+interface Comparable
+
+StudentGroup <|--* Student
+StudentGroup <|--* StudentIterator
+StudentGroup --* Student
+
+StudentSteam <|--* StudentGroup
+StudentSteam <|--* GroupIterator
+StudentSteam --* StudentGroup
+
+'class Employee extends Person
+'class Teacher extends Person
+
+hide @unlinked
+@enduml
