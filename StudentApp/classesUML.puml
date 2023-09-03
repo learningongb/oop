@@ -65,13 +65,13 @@ class GroupIterator implements Iterator {
 
 interface Comparable
 
-StudentGroup <|--* Student
-StudentGroup <|--* StudentIterator
-StudentGroup --* Student
+Student --o StudentGroup
+StudentIterator <|-- StudentGroup
+'StudentGroup --* Student
 
-StudentSteam <|--* StudentGroup
-StudentSteam <|--* GroupIterator
-StudentSteam --* StudentGroup
+StudentGroup --o StudentSteam
+GroupIterator <|-- StudentSteam
+'StudentSteam --* StudentGroup
 
 'class Employee extends Person
 'class Teacher extends Person
