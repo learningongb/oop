@@ -2,9 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import Domen.Student;
-import Domen.StudentGroup;
-import Domen.StudentSteam;
+import Controlers.AccountController;
+import Domen.*;
 
 public class App {
 	public static void main(String[] args) throws Exception {
@@ -65,6 +64,19 @@ public class App {
 		System.out.println();
 		System.out.println("Вывод StudentSteam.toString() после сортировки групп и студентов в них =========================================================");
 		System.out.println(steam1);
-		
+
+		Teacher t1 = new Teacher("Галина", 55, "Docent");
+		Teacher t2 = new Teacher("Татьяна", 57, "Docent");
+
+		System.out.println(new PersonComparator<Student>().compare(s1, s3));
+
+		// AccountController controller = new AccountController();
+		// controller.paySalary(t1, 50000);
+		// controller.paySalary(s1, 50000);
+
+		AccountController.paySalary(t1, 50000);
+
+		System.out.println(String.format("Средний возраст студентов: %f", AccountController.averageAge(listStud)));
+
 	}
 }

@@ -7,4 +7,9 @@ public class Teacher extends Person {
 		super(firstName, age);
 		this.acadDegree = acadDegree;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "acadDegree='" + acadDegree + '\'';
+	}
 }
