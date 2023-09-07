@@ -9,7 +9,7 @@ package Domen;
  * Реализован интерфейс Comparable, сравнивающий студентов по Имени, а если имена одинаковые, то по возрасту.
  *
  */
-public class Student extends Person implements Comparable<Student> {
+public class Student<T extends Student> extends Person<Student> implements Comparable<Student> {
 
 	/** Счетчик идентификаторов по всем объектам класса*/
 	private static int generalId;
@@ -22,7 +22,7 @@ public class Student extends Person implements Comparable<Student> {
 	 * @param name Имя
 	 * @param age Возраст
 	 */
-	public Student(String name, int age) {
+	public <T>Student(String name, int age) {
 		super(name, age);
 		this.id = generalId++;
 	}

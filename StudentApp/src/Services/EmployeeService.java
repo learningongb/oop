@@ -50,7 +50,7 @@ public class EmployeeService implements iPersonService<Employee> {
      */
     @Override
     public void create(String name, int age) {
-        Employee epls = new Employee(name, age, "basic");
+        Employee epls = new Employee<>(name, age, "basic");
         count++;
         employees.add(epls);
     }

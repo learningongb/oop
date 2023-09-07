@@ -7,7 +7,7 @@ package Domen;
  * Добавляет поле special, которое хранит название специальности работника.
  *
  */
-public class Employee extends Person{
+public class Employee<T extends Employee> extends Person<Employee>{
     /**
      * Название специальности
      */
@@ -19,7 +19,7 @@ public class Employee extends Person{
      * @param age возвраст
      * @param special специальность
      */
-    public Employee(String firstName, int age, String special) {
+    public <T>Employee(String firstName, int age, String special) {
         super(firstName, age);
         this.special = special;
     }

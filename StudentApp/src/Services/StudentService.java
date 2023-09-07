@@ -49,7 +49,7 @@ public class StudentService implements iPersonService<Student> {
      */
     @Override
     public void create(String name, int age) {
-        Student stud = new Student(name, age);
+        Student stud = new Student<>(name, age);
         count++;
         students.add(stud);
     }

@@ -60,7 +60,7 @@ public class TeacherService implements iPersonService<Teacher>{
      */
     @Override
     public void create(String name, int age) {
-        Teacher teacher = new Teacher(name, age, "basic");
+        Teacher teacher = new Teacher<>(name, age, "basic");
         count++;
         teachers.add(teacher);
     }

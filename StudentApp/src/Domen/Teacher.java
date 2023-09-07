@@ -7,7 +7,7 @@ package Domen;
  * Добавляет поле acadDegree, которое хранит ученую степень.
  *
  */
-public class Teacher extends Person {
+public class Teacher<T extends Teacher> extends Person<Person> {
 	/**
 	 * Ученая степень
 	 */
@@ -19,7 +19,7 @@ public class Teacher extends Person {
 	 * @param age возвраст
 	 * @param acadDegree ученая степень
 	 */
-	public Teacher(String firstName, int age, String acadDegree) {
+	public <T>Teacher(String firstName, int age, String acadDegree) {
 		super(firstName, age);
 		this.acadDegree = acadDegree;
 	}
