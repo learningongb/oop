@@ -4,6 +4,7 @@ import java.util.List;
 
 import Controlers.AccountController;
 import Domen.*;
+import Services.TeacherService;
 
 public class App {
 	public static void main(String[] args) throws Exception {
@@ -77,6 +78,13 @@ public class App {
 		AccountController.paySalary(t1, 50000);
 
 		System.out.println(String.format("Средний возраст студентов: %f", AccountController.averageAge(listStud)));
+
+		System.out.println("Тест работы TeacherService =========================================================");
+		TeacherService ts = new TeacherService();
+		ts.create("Валентина", 21);
+		ts.create("Анастасия", 20);
+		ts.print();
+
 
 	}
 }

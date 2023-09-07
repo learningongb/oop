@@ -63,6 +63,57 @@ class GroupIterator implements Iterator {
     +next(): StudentGroup
 }
 
+class PersonComparator implements Comparator {
+    ..@Override..
+    compare(): int
+}
+
+class Employee extends Person {
+    -special: String
+}
+
+class Teacher extends Person {
+    -acadDegree: String
+    __
+    ..@Override..
+    +toString(): String
+}
+
+class EmployeeService implements iPersonService {
+    -count: int
+    -employees: list<Employee>
+    __
+    +sortByFIO()
+    ..@Override..
+    +getAll(): list<Employee>
+    create()
+}
+
+class StudentService implements iPersonService {
+    -count: int
+    -students: list<Employee>
+    __
+    +sortByFIO()
+    ..@Override..
+    +getAll(): list<Student>
+    create()
+}
+
+class TeacherService implements iPersonService {
+    -count: int
+    -teachers: list<Teacher>
+    __
+    +sortByFIO()
+    +print()
+    ..@Override..
+    +getAll(): list<Teacher>
+    create()
+}
+
+interface iPersonService {
+    +getAll(): list<T>
+    +create()
+}
 interface Comparable
 
 Student --o StudentGroup
@@ -73,8 +124,10 @@ StudentGroup --o StudentSteam
 GroupIterator <|-- StudentSteam
 'StudentSteam --* StudentGroup
 
-'class Employee extends Person
-'class Teacher extends Person
+EmployeeService o-- Employee
+TeacherService o-- Teacher
+StudentService o-- Student
+
 
 hide @unlinked
 @enduml
