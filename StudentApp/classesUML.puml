@@ -128,6 +128,9 @@ EmployeeService o-- Employee
 TeacherService o-- Teacher
 StudentService o-- Student
 
+EmployeeService -- PersonComparator
+TeacherService -- PersonComparator
+StudentService -- PersonComparator
 
 hide @unlinked
 @enduml
