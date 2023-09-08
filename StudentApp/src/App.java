@@ -8,12 +8,12 @@ import Services.TeacherService;
 
 public class App {
 	public static void main(String[] args) throws Exception {
-		Student s1 = new Student<>("Иван", 25);
-		Student s2 = new Student<>("Игорь", 23);
-		Student s3 = new Student<>("Иван", 22);
-		Student s4 = new Student<>("Игорь", 23);
-		Student s5 = new Student<>("Даша", 23);
-		Student s6 = new Student<>("Лена", 23);
+		Student s1 = new Student("Иван", 25);
+		Student s2 = new Student("Игорь", 23);
+		Student s3 = new Student("Иван", 22);
+		Student s4 = new Student("Игорь", 23);
+		Student s5 = new Student("Даша", 23);
+		Student s6 = new Student("Лена", 23);
 
 		List<Student> listStud = new ArrayList<Student>();
 		listStud.add(s1);
@@ -42,8 +42,8 @@ public class App {
 		steam1.add(group4580);
 		
 		StudentGroup group4581 = new StudentGroup(4581);
-		group4581.add(new Student<>("Яков", 22));
-		group4581.add(new Student<>("Михаил", 21));
+		group4581.add(new Student("Яков", 22));
+		group4581.add(new Student("Михаил", 21));
 		steam1.add(group4581);
 		
 		System.out.println();
@@ -66,8 +66,8 @@ public class App {
 		System.out.println("Вывод StudentSteam.toString() после сортировки групп и студентов в них =========================================================");
 		System.out.println(steam1);
 
-		Teacher t1 = new Teacher<>("Галина", 55, "Docent");
-		Teacher t2 = new Teacher<>("Татьяна", 57, "Docent");
+		Teacher t1 = new Teacher("Галина", 55, "Docent");
+		Teacher t2 = new Teacher("Татьяна", 57, "Docent");
 
 		System.out.println(new PersonComparator<Student>().compare(s1, s3));
 

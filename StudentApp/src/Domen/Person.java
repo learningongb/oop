@@ -2,14 +2,14 @@ package Domen;
 
 /**
  * Абстрактный класс. Содержит поля:
- * name: String - имя
- * age: int - возраст
+ * name: String - {@link Peson.name}
+ * age: int
  * 
  * Реализованые геттеры и сеттеры полей, а так же метод toString,
  * возвращающий представление вида "Person [name=<name>, age=<age>]".
  *
  */
-public abstract class Person<T extends Person> {
+public abstract class Person {
 	/** Имя */
 	private String name;
 	/** Возраст */
@@ -20,7 +20,7 @@ public abstract class Person<T extends Person> {
 	 * @param name имя
 	 * @param age возраст
 	 */
-	public <T>Person(String name, int age) {
+	public Person(String name, int age) {
 		this.name = name;
 		this.age = age;
 	}
