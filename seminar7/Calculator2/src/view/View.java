@@ -25,12 +25,14 @@ public class View {
                     System.out.printf("Результат %s\n", result.getResultString());
                     break;
                 }
-                iResult arg = calculator.getNewArgument().promptArgument("Введите второй аргумент");
                 if (cmd.equals("*")) {
+                    iResult arg = calculator.getNewArgument().promptArgument("Введите второй аргумент");
                     calculator.multi(arg);
                 } else if (cmd.equals("+")) {
+                    iResult arg = calculator.getNewArgument().promptArgument("Введите второй аргумент");
                     calculator.sum(arg);
                 } else if (cmd.equals("/")) {
+                    iResult arg = calculator.getNewArgument().promptArgument("Введите второй аргумент");
                     calculator.devide(arg);
                 } else {
                     System.out.println("Неизвестная команда");

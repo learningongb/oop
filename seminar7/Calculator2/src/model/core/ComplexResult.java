@@ -20,7 +20,7 @@ public class ComplexResult implements iResult {
 
     @Override
     public String getResultString() {
-        return String.format("%d + %di", realValue, imgValue);
+        return String.format("%d%s%di", realValue, imgValue < 0 ? "-" : "+", Math.abs(imgValue));
     }
 
     @Override
