@@ -1,6 +1,5 @@
 package model;
 
-import model.core.ComplexCalculator;
 import model.interfaces.iCalculator;
 import model.interfaces.iLogger;
 import model.interfaces.iResult;
@@ -22,7 +21,7 @@ public class CalculatorWithLogger implements iCalculator {
      * @param calculator используемый калькулятор
      * @param logger используемый логер
      */
-    public CalculatorWithLogger(ComplexCalculator calculator, iLogger logger) {
+    public CalculatorWithLogger(iCalculator calculator, iLogger logger) {
         this.calculator = calculator;
         this.logger = logger;
     }
@@ -35,9 +34,9 @@ public class CalculatorWithLogger implements iCalculator {
     @Override
     public iCalculator sum(iResult arg) {
         String before = calculator.getResult().toString();
-        iCalculator result = calculator.sum(arg);
+        calculator.sum(arg);
         logger.write(String.format("%s + %s = %s", before, arg, calculator.getResult()));
-        return result;
+        return this;
     }
 
     /**
@@ -48,22 +47,22 @@ public class CalculatorWithLogger implements iCalculator {
     @Override
     public iCalculator multi(iResult arg) {
         String before = calculator.getResult().toString();
-        iCalculator result = calculator.multi(arg);
+        calculator.multi(arg);
         logger.write(String.format("(%s) * (%s) = (%s)", before, arg, calculator.getResult()));
-        return result;
+        return this;
     }
 
     /**
      * Переопределение операции деления. Логируется.
      * @param arg делитель
-     * @return ComplexCalculator
+     * @return CalculatorWithLogger
      */
     @Override
     public iCalculator devide(iResult arg) {
         String before = calculator.getResult().toString();
-        iCalculator result = calculator.devide(arg);
+        calculator.devide(arg);
         logger.write(String.format("(%s) / (%s) = (%s)", before, arg, calculator.getResult()));
-        return result;
+        return this;
     }
 
     /**
