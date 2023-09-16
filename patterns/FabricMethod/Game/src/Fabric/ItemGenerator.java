@@ -4,10 +4,11 @@ import Interfaces.iGameItem;
 
 public abstract class ItemGenerator {
 
-    public void openReward() {
+    public void openReward()
+    {
         iGameItem gameItem = createItem();
         gameItem.open();
     }
-    public abstract iGameItem createItem();
 
+    public abstract iGameItem createItem();    
 }

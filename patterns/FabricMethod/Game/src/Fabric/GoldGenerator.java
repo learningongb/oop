@@ -9,4 +9,5 @@ public class GoldGenerator extends ItemGenerator{
     public iGameItem createItem() {
         return new GoldReward();
     }
-}
+
+} 
