@@ -5,14 +5,25 @@ import model.interfaces.iResult;
 
 import java.util.Scanner;
 
+/**
+ * Обеспечивает взаимодействие с пользователем: ввод команд и вывод результата.
+ */
 public class View {
 
+    /** Используемый калькулятор */
     private iCalculator calculator;
 
+    /**
+     * Конструктор. Устанавливает используемый калькулятор.
+     * @param calculator используемый калькулятор
+     */
     public View(iCalculator calculator) {
         this.calculator = calculator;
     }
 
+    /**
+     * Основной метод взаимодействия с пользователем.
+     */
     public void run() {
         while (true) {
             calculator.reset();
@@ -22,7 +33,7 @@ public class View {
                 String cmd = prompt("Введите команду (*, +, /, =) : ");
                 if (cmd.equals("=")) {
                     iResult result = calculator.getResult();
-                    System.out.printf("Результат %s\n", result.getResultString());
+                    System.out.printf("Результат %s\n", result);
                     break;
                 }
                 if (cmd.equals("*")) {
@@ -46,6 +57,11 @@ public class View {
         }
     }
 
+    /**
+     * Запрашивает от пользователя ввод строковых данных
+     * @param message Сообщение пользователю
+     * @return введенная пользователем строка
+     */
     private String prompt(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message);

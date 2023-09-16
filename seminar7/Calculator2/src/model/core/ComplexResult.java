@@ -19,11 +19,6 @@ public class ComplexResult implements iResult {
     }
 
     @Override
-    public String getResultString() {
-        return String.format("%d%s%di", realValue, imgValue < 0 ? "-" : "+", Math.abs(imgValue));
-    }
-
-    @Override
     public iResult promptArgument(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message + " (действительная часть): ");
@@ -31,5 +26,10 @@ public class ComplexResult implements iResult {
         System.out.print(message + " (мнимая часть): ");
         this.imgValue = Integer.parseInt(in.nextLine());
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d%s%di", realValue, imgValue < 0 ? "-" : "+", Math.abs(imgValue));
     }
 }

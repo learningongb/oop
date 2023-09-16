@@ -2,53 +2,92 @@ package model;
 
 import model.core.ComplexCalculator;
 import model.interfaces.iCalculator;
+import model.interfaces.iLogger;
 import model.interfaces.iResult;
 
+/**
+ * Декоратор, логирующий все выполняемые пользователем команды в формате:
+ * <ЗначениеВКалькуляторе> <ВыполняемоеДействие> <ВторойАргументОперации> = <РезультатОперации>
+ *     Например, если в калькуляторе было сохранено значение 5, вызов sum(4) добавит в лог запись
+ *     5 + 4 = 9
+ */
 public class CalculatorWithLogger implements iCalculator {
-
+    /** Используемый калькулятор */
     private iCalculator calculator;
-    private Logger logger;
+    /** Используемый логер */
+    private iLogger logger;
 
-    public CalculatorWithLogger(ComplexCalculator calculator, Logger logger) {
+    /**
+     * Конструктор, устанавливающий калькулятор и логер
+     * @param calculator используемый калькулятор
+     * @param logger используемый логер
+     */
+    public CalculatorWithLogger(ComplexCalculator calculator, iLogger logger) {
         this.calculator = calculator;
         this.logger = logger;
     }
 
+    /**
+     * Переопределение операции сложения. Логируется.
+     * @param arg слагаемое
+     * @return CalculatorWithLogger
+     */
     @Override
     public iCalculator sum(iResult arg) {
-        String before = calculator.getResult().getResultString();
+        String before = calculator.getResult().toString();
         iCalculator result = calculator.sum(arg);
-        logger.write(String.format("%s + %s = %s", before, arg.getResultString(), calculator.getResult().getResultString()));
+        logger.write(String.format("%s + %s = %s", before, arg, calculator.getResult()));
         return result;
     }
 
+    /**
+     * Переопределение операции умножения. Логируется.
+     * @param arg множитель
+     * @return CalculatorWithLogger
+     */
     @Override
     public iCalculator multi(iResult arg) {
-        String before = calculator.getResult().getResultString();
+        String before = calculator.getResult().toString();
         iCalculator result = calculator.multi(arg);
-        logger.write(String.format("(%s) * (%s) = (%s)", before, arg.getResultString(), calculator.getResult().getResultString()));
+        logger.write(String.format("(%s) * (%s) = (%s)", before, arg, calculator.getResult()));
         return result;
     }
 
+    /**
+     * Переопределение операции деления. Логируется.
+     * @param arg делитель
+     * @return ComplexCalculator
+     */
     @Override
     public iCalculator devide(iResult arg) {
-        String before = calculator.getResult().getResultString();
+        String before = calculator.getResult().toString();
         iCalculator result = calculator.devide(arg);
-        logger.write(String.format("(%s) / (%s) = (%s)", before, arg.getResultString(), calculator.getResult().getResultString()));
+        logger.write(String.format("(%s) / (%s) = (%s)", before, arg, calculator.getResult()));
         return result;
     }
 
+    /**
+     * Обнуляет значение в калькуляторе. Логируется.
+     */
     @Override
     public void reset() {
         logger.write("Reset калькулятора");
         calculator.reset();
     }
 
+    /**
+     * Возвращает сохраненный в калькуляторе результат
+     * @return iResult
+     */
     @Override
     public iResult getResult() {
         return calculator.getResult();
     }
 
+    /**
+     * Возвращает новый экземпляр результата, с которым работает калькулятор
+     * @return iResult
+     */
     @Override
     public iResult getNewArgument() {
         return calculator.getNewArgument();
